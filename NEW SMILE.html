@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8">
+  <title>Bakhtiyaa Nasiib</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      margin-top: 50px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Bakhtiyaa Nasiib 🎲</h1>
+  <p>Gali numberka nasiibkaaga (1–100):</p>
+  <input type="number" id="number" min="1" max="100" placeholder="Nambarkaaga">
+  <br>
+  <button onclick="checkNumber()">Riix Nasiib Wacan</button>
+  <div id="result"></div>
+
+  <script>
+    // Nambarrada guuleystayaasha
+    const winners = {
+      12: "Guuleyste! dhaqid 🎉",
+      46: "Guuleyste! magar 🎉",
+      76: "Guuleyste! 25 Dollar 🎉",
+      36: "Guuleyste! 25 Dollar 💵",
+      80: "Guuleyste! xirid🎉"
+    };
+
+    // Kaydinta nambarrada la isticmaalay
+    let usedNumbers = new Set();
+
+    function checkNumber() {
+      let num = parseInt(document.getElementById("number").value);
+
+      if (isNaN(num) || num < 1 || num > 100) {
+        alert("Fadlan geli nambar sax ah 1–100!");
+        return;
+      }
+
+      if (usedNumbers.has(num)) {
+        document.getElementById("result").innerHTML =
+          "Nambarkan hore ayaa la isticmaalay ❌";
+        return;
+      }
+
+      usedNumbers.add(num);
+
+      if (winners[num]) {
+        document.getElementById("result").innerHTML =
+
+          "Nambarkaaga: " + num + "<br>" + winners[num];
+      } else {
+        document.getElementById("result").innerHTML =
+          "Nambarkaaga: " + num + "<br>Guul darro ❌";
+      }
+    }
+  </script>
+</body>
+</html>
